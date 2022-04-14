@@ -1,6 +1,21 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Dec 20 13:30:47 2021
+
+@author: student
+"""
+
+# 07. Pandas _ Series, DataFrame 
+
 import numpy as np
 import pandas as pd 
 from pandas import Series, DataFrame
+
+# pandas : 2차원 정형데이터(테이블, 표, 데이터프레임)
+
+# 기본단위 : Series
+# - 1차원 자료 구조 
+# - 하나의 데이터 타입 허용
 
 Series([1,2,3,4])
 s1 = Series([1,2,3,4])
@@ -9,7 +24,7 @@ s2 = Series([1,2,3,'4'])
 s3 = Series([1,2,3,4], index = ['a','b','c','d'])
 # Series([1,2,3,4], ['a','b','c','d'])
 
-Series(s3, index=['A','B','C','D']) 
+Series(s3, index=['A','B','C','D']) # 이미 index가 존재하는 경우
 
 # 색인 (indexing)
 s1[0]            # 1 (차원축소 일어남 >> scalar 값) 
@@ -20,6 +35,8 @@ s1[[0,3]]        # 차원 축소 x (Series로 반환)
 # 0    1
 # 3    4
 # dtype: int64
+
+
 s3['a']
 s3[['a','c']]
 # a    1
@@ -62,6 +79,7 @@ s3.add(s5, fill_value=0)
 s3.sub(s5, fill_value=0)  # - 연산 
 s3.mul(s5, fill_value=1)  # * 연산 
 s3.div(s5, fill_value=1)  # / 연산 
+
 # 기본 메소드 
 s1.dtype  # dtype('int64') 데이터 타입 출력 
 s1.index  # RangeIndex(start=0, stop=4, step=1) 인덱스 출력 

@@ -1,26 +1,39 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Dec 20 15:18:01 2021
+
+@author: student
+"""
+
+# 판다스_문자열 메소드 
+# 기본 메소드 : 벡터 연산 불가능 (매 원소마다 반복 불가)
+
 'abc'.upper()
-'ABC'
-'a/b/c'.split('/'_[1]
-'b'
+'a/b/c'.split('/')[1]
 
 l1 = ['abc','def']
 l2 = ['a/b/c','d/e/f']
 
-l1.upper() 사용불가
-l2.upper() 사용불가
+l1.upper()  # 안되용 >> 불가
+l2.upper()  # 안되용 >> 불가
 
 map(lambda x: x.upper(),l1)
 list(map(lambda x: x.upper(),l1))
-['ABC', 'DEF']
-list(map(lambda x: x.splist('/'),l2))
- [['a', 'b', 'c'], ['d', 'e', 'f']]
+list(map(lambda x: x.split('/'),l2))
+# [['a', 'b', 'c'], ['d', 'e', 'f']]
 
-form pandas import Series, DataFrame
+# pandas 메서드 : 벡터화 내장 (매 원소마다 반복 가능)
+# Series, DataFrame 적용 가능 
 
+from pandas import Series, DataFrame
+
+# 1) split
 Series(l1)
 # 0    abc
 # 1    def
 # dtype: object
+s1=Series(l1)
+s2=Series(l2)
 
 s2
 # 0    a/b/c
@@ -33,6 +46,8 @@ s2.str.split('/') # 되용 >> 가능
 # 1    [d, e, f]
 # dtype: object
 
+# 대소치환 
+
 s1.str.upper() # 대문자 치환 
 s1.str.lower() # 소문자 치환 (*****)
 s1.str.title()
@@ -42,7 +57,10 @@ s1.str.title()
 
 # replace (치환)
 s1.str.replace('a','A')   # 문자열 치환
-s1.str.replace('a','')    # 문자열 삭제 
+s1.str.replace('a','')    # 문자열 삭제  
+# 0     bc
+# 1    def
+# dtype: object
 
 # [예제] 천단위 구분기호 처리 
 s3 = Series(['1,200','3,000','4,000'])
@@ -53,6 +71,8 @@ s3 = Series(['1,200','3,000','4,000'])
 
 s3.sum() #'1,2003,0004,000' >> 천단위 구분기호(,000) 때문에 문자열 결합으로 해석
 s3.str.replace(',','').astype(int).sum() #8200
+
+# 패턴확인 : stratswith, endswith, contains
 
 s1.str.startswith('a')
 # 0     True
